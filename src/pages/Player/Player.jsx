@@ -19,15 +19,13 @@ const Player = () => {
     type: ''
   });
 
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOWQ3NzFhZjUwNWE5YmZmM2Q1NDBlNWVmNDM2MjhiMyIsIm5iZiI6MTc1Mzk2Nzc5NS4zOTUsInN1YiI6IjY4OGI2Y2IzZWYwMTdiZTE4ZGFkMmM3MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.evCmdmkrJTT2QGdSzROMOL2iNJ_d_2lzFXmMY0cKh4k'
-    }
-  };
-
-  useEffect(() => {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`
+      }
+    };  useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
       .then(res => res.json())
       .then(res => setApiData(res.results[0]))
